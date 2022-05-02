@@ -1,9 +1,9 @@
-/* ½¨Á¢Ò»¸öÈýÎ¬Êý×é£¬ÊµÏÖÊý×éÔÚÒÔÐÐÐòÓÅÏÈµÄ´æ´¢½á¹¹£¬
-   ¸÷Î¬µÄ³¤¶ÈÓÉÓÃ»§´Ó¼üÅÌÊäÈë£¬´æÈëÎ¬³¤Êý×ébounds[]¡£
-   ÓÉnÎ¬Êý×éÓ³Ïñº¯Êý¹«Ê½(Loc(Aijk)=Loc(a000)+(i¡Ám¡Án+j¡Án+k)¡Ád)
-   ¼ÆËã³öÓ³Ïñº¯ÊýÖÐ¸÷³£Á¿Öµ(m¡Án, n, 1)Ci£¬´æÈëÓ³Ïñº¯Êý³£Á¿Êý×éconstants[]£¬
-   ÎªÊµ¼Ê¼ÆËãÊý×éÔªËØµÄµØÖ·×ö×¼±¸¡£Êý×éµÄÖµÓÉÑ­»·¸³ÖµÍê³É£¬
-   ×îºó°´½á¹¹Êä³öÊý×éÔªËØµÄÖµ£¬²¢ÊÍ·Å¸ÃÊý×é¡£*/
+/* å»ºç«‹ä¸€ä¸ªä¸‰ç»´æ•°ç»„ï¼Œå®žçŽ°æ•°ç»„åœ¨ä»¥è¡Œåºä¼˜å…ˆçš„å­˜å‚¨ç»“æž„ï¼Œ
+   å„ç»´çš„é•¿åº¦ç”±ç”¨æˆ·ä»Žé”®ç›˜è¾“å…¥ï¼Œå­˜å…¥ç»´é•¿æ•°ç»„bounds[]ã€‚
+   ç”±nç»´æ•°ç»„æ˜ åƒå‡½æ•°å…¬å¼(Loc(Aijk)=Loc(a000)+(iÃ—mÃ—n+jÃ—n+k)Ã—d)
+   è®¡ç®—å‡ºæ˜ åƒå‡½æ•°ä¸­å„å¸¸é‡å€¼(mÃ—n, n, 1)Ciï¼Œå­˜å…¥æ˜ åƒå‡½æ•°å¸¸é‡æ•°ç»„constants[]ï¼Œ
+   ä¸ºå®žé™…è®¡ç®—æ•°ç»„å…ƒç´ çš„åœ°å€åšå‡†å¤‡ã€‚æ•°ç»„çš„å€¼ç”±å¾ªçŽ¯èµ‹å€¼å®Œæˆï¼Œ
+   æœ€åŽæŒ‰ç»“æž„è¾“å‡ºæ•°ç»„å…ƒç´ çš„å€¼ï¼Œå¹¶é‡Šæ”¾è¯¥æ•°ç»„ã€‚*/
 #include<stdio.h>
 #include<stdarg.h>
 #include<stdlib.h>
@@ -127,20 +127,20 @@ int main()
 	Array A;
 	ElemType e;
 	int i, j, k, dim = 3, bounds[3];
-	printf("ÇëÊäÈëÈýÎ¬Êý×éµÄ¸÷Î¬³¤¶È£º");
+	printf("è¯·è¾“å…¥ä¸‰ç»´æ•°ç»„çš„å„ç»´é•¿åº¦ï¼š");
 	scanf("%d %d %d", &bounds[0], &bounds[1], &bounds[2]);
 	InitArray(A, dim, bounds[0], bounds[1], bounds[2]);
 	printf("A.bounds = ");
-	for(i = 0; i < dim; i++) //Êä³öbounds 
+	for(i = 0; i < dim; i++) //è¾“å‡ºbounds 
 	{
 		printf("%d ", *(A.bounds + i));
 	}
 	printf("\nA.constants = ");
-	for(i = 0; i < dim; i++) //Êä³öconstants 
+	for(i = 0; i < dim; i++) //è¾“å‡ºconstants 
 	{
 		printf("%d ", *(A.constants + i));
 	}
-	printf("\n%dÒ³%dÐÐ%dÁÐ¾ØÕóÔªËØÈçÏÂ£º\n", bounds[0], bounds[1], bounds[2]);
+	printf("\n%dé¡µ%dè¡Œ%dåˆ—çŸ©é˜µå…ƒç´ å¦‚ä¸‹ï¼š\n", bounds[0], bounds[1], bounds[2]);
 	for(i = 0; i < bounds[0]; i++)
 	{
 		for(j = 0; j < bounds[1]; j++)
@@ -148,11 +148,11 @@ int main()
 			for(k = 0; k < bounds[2]; k++)
 			{
 				e = rand() % 50;
-				Assign(A, e, i, j, k); //½«0-50µÄËæ»úÊýËæ»ú¸³¸øA[i][j][k] 
+				Assign(A, e, i, j, k); //å°†0-50çš„éšæœºæ•°éšæœºèµ‹ç»™A[i][j][k] 
 				printf("A[%d][%d][%d] = %d\n", i, j, k, e);
 			}
 		}
 	}
-	DestroyArray(A); //ÊÍ·ÅÊý×é 
+	DestroyArray(A); //é‡Šæ”¾æ•°ç»„ 
 	return 0;
 }
