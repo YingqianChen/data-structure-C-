@@ -1,6 +1,6 @@
-/* ÊäÈëÒ»¸öÏ¡Êè¾ØÕóA£¬½¨Á¢ AµÄÈıÔª×éË³Ğò±í
-   ÇóAµÄ×ªÖÃ¾ØÕóB
-   Çó¾ØÕóAºÍBµÄºÍ£¬C */ 
+/* è¾“å…¥ä¸€ä¸ªç¨€ç–çŸ©é˜µAï¼Œå»ºç«‹ Açš„ä¸‰å…ƒç»„é¡ºåºè¡¨
+   æ±‚Açš„è½¬ç½®çŸ©é˜µB
+   æ±‚çŸ©é˜µAå’ŒBçš„å’Œï¼ŒC */ 
 #include<stdio.h>
 #define MAXSIZE 12500
 #define OK 1
@@ -19,11 +19,11 @@ typedef struct
 } TSMatrix;
 Status CreateSMatrix(TSMatrix &M)
 {
-	printf("ÇëÊäÈë¾ØÕóµÄĞĞÊı£¬ÁĞÊı£¬·ÇÁãÔªËØÊı£º");
+	printf("è¯·è¾“å…¥çŸ©é˜µçš„è¡Œæ•°ï¼Œåˆ—æ•°ï¼Œéé›¶å…ƒç´ æ•°ï¼š");
 	scanf("%d,%d,%d", &M.mu, &M.nu, &M.tu);
 	for(int i = 1; i <= M.tu; i++)
 	{
-		printf("Çë°´ĞĞĞòË³ĞòÊäÈëµÚ%d¸ö·ÇÁãÔªËØËùÔÚµÄĞĞ£¨1~%d)£¬ÁĞ(1~%d)£¬ÔªËØÖµ£º", i, M.mu, M.nu);
+		printf("è¯·æŒ‰è¡Œåºé¡ºåºè¾“å…¥ç¬¬%dä¸ªéé›¶å…ƒç´ æ‰€åœ¨çš„è¡Œï¼ˆ1~%d)ï¼Œåˆ—(1~%d)ï¼Œå…ƒç´ å€¼ï¼š", i, M.mu, M.nu);
 		scanf("%d,%d,%d", &M.data[i].i, &M.data[i].j, &M.data[i].e);
 	}
 	return OK;
@@ -40,7 +40,7 @@ void DestroySMatrix(TSMatrix &M)
 }
 Status PrintSMatrix(TSMatrix M)
 {
-	printf("Ï¡Êè¾ØÕó¶ÔÓ¦µÄÈıÔª×é±íÎª£º\n%dĞĞ%dÁĞ%d¸ö·ÇÁãÔªËØ\nĞĞ  ÁĞ  ÔªËØÖµ\n", M.mu, M.nu, M.tu);
+	printf("ç¨€ç–çŸ©é˜µå¯¹åº”çš„ä¸‰å…ƒç»„è¡¨ä¸ºï¼š\n%dè¡Œ%dåˆ—%dä¸ªéé›¶å…ƒç´ \nè¡Œ  åˆ—  å…ƒç´ å€¼\n", M.mu, M.nu, M.tu);
 	for(int i = 1; i <= M.tu; i++)
 	{
 		printf("%2d%4d%8d", M.data[i].i, M.data[i].j, M.data[i].e);
@@ -50,7 +50,7 @@ Status PrintSMatrix(TSMatrix M)
 }
 Status AddSMatrix(TSMatrix M, TSMatrix N, TSMatrix &Q)
 {
-	if(M.mu != N.mu || M.nu != N.nu) //¾ØÕóÏà¼ÓµÄÌõ¼ş 
+	if(M.mu != N.mu || M.nu != N.nu) //çŸ©é˜µç›¸åŠ çš„æ¡ä»¶ 
 	{
 		return ERROR;
 	}
@@ -80,7 +80,7 @@ Status AddSMatrix(TSMatrix M, TSMatrix N, TSMatrix &Q)
 		}
 		else if(M.data[i].i == N.data[j].i && M.data[i].j == N.data[j].j)
 		{
-			if(M.data[i].e + N.data[j].e) //Á½ÔªËØÖ®ºÍ²»Îª0 
+			if(M.data[i].e + N.data[j].e) //ä¸¤å…ƒç´ ä¹‹å’Œä¸ä¸º0 
 			{
 				Q.data[k].e = M.data[i].e + N.data[j].e;
 				Q.data[k].i = M.data[i].i;
@@ -91,7 +91,7 @@ Status AddSMatrix(TSMatrix M, TSMatrix N, TSMatrix &Q)
 			i++; j++;
 		}
 	}
-	while(i <= M.tu) //ÈôM¾ØÕó´æÔÚÊ£ÓàÔªËØ£¬½«ÆäÌí¼Óµ½QÖĞ 
+	while(i <= M.tu) //è‹¥MçŸ©é˜µå­˜åœ¨å‰©ä½™å…ƒç´ ï¼Œå°†å…¶æ·»åŠ åˆ°Qä¸­ 
 	{
 		Q.data[k].i = M.data[i].i;
 		Q.data[k].j = M.data[i].j;
@@ -99,7 +99,7 @@ Status AddSMatrix(TSMatrix M, TSMatrix N, TSMatrix &Q)
 		i++; k++;
 		Q.tu++;
 	}
-	while(j <= N.tu) //ÈôN¾ØÕó´æÔÚÊ£ÓàÔªËØ£¬½«ÆäÌí¼Óµ½QÖĞ 
+	while(j <= N.tu) //è‹¥NçŸ©é˜µå­˜åœ¨å‰©ä½™å…ƒç´ ï¼Œå°†å…¶æ·»åŠ åˆ°Qä¸­ 
 	{
 		Q.data[k].i = N.data[j].i;
 		Q.data[k].j = N.data[j].j;
@@ -109,7 +109,7 @@ Status AddSMatrix(TSMatrix M, TSMatrix N, TSMatrix &Q)
 	}
 	return OK;
 }
-Status TransposeSMatrix(TSMatrix M, TSMatrix &T)//Ò»°ã×ªÖÃ 
+Status TransposeSMatrix(TSMatrix M, TSMatrix &T)//ä¸€èˆ¬è½¬ç½® 
 {
 	int p, q, col;
 	T.mu = M.nu;
@@ -134,7 +134,7 @@ Status TransposeSMatrix(TSMatrix M, TSMatrix &T)//Ò»°ã×ªÖÃ
 	}
 	return OK;
 }
-Status FastTransposeSMatrix(TSMatrix M, TSMatrix &T)//¿ìËÙ×ªÖÃ 
+Status FastTransposeSMatrix(TSMatrix M, TSMatrix &T)//å¿«é€Ÿè½¬ç½® 
 {
 	int p, q, col, t;
 	int num[20], cpot[20];
@@ -171,20 +171,20 @@ Status FastTransposeSMatrix(TSMatrix M, TSMatrix &T)//¿ìËÙ×ªÖÃ
 int main()
 {
 	TSMatrix A, B1, B2, C1, C2;
-	printf("´´½¨¾ØÕóA£º\n");
+	printf("åˆ›å»ºçŸ©é˜µAï¼š\n");
 	CreateSMatrix(A);
 	TransposeSMatrix(A, B1);
 	FastTransposeSMatrix(A, B2);
 	AddSMatrix(A, B1, C1);
 	AddSMatrix(A, B2, C2);
 	PrintSMatrix(A);
-	printf("¾ØÕóB1£¨AµÄ×ªÖÃ£¬²ÉÓÃÒ»°ã×ªÖÃ£©£º\n");
+	printf("çŸ©é˜µB1ï¼ˆAçš„è½¬ç½®ï¼Œé‡‡ç”¨ä¸€èˆ¬è½¬ç½®ï¼‰ï¼š\n");
 	PrintSMatrix(B1);
-	printf("¾ØÕóB2£¨AµÄ×ªÖÃ£¬²ÉÓÃ¿ìËÙ×ªÖÃ£©£º\n");
+	printf("çŸ©é˜µB2ï¼ˆAçš„è½¬ç½®ï¼Œé‡‡ç”¨å¿«é€Ÿè½¬ç½®ï¼‰ï¼š\n");
 	PrintSMatrix(B2);
-	printf("¾ØÕóC1£¨A+B1£©£º\n");
+	printf("çŸ©é˜µC1ï¼ˆA+B1ï¼‰ï¼š\n");
 	PrintSMatrix(C1);
-	printf("¾ØÕóC2£¨A+B2£©£º\n");
+	printf("çŸ©é˜µC2ï¼ˆA+B2ï¼‰ï¼š\n");
 	PrintSMatrix(C2);
 	DestroySMatrix(A);
 	return 0;
