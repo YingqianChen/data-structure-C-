@@ -97,8 +97,8 @@ void PrintHuffmanCode(HuffmanCode HC, int *w, int n)
 }
 int main()
 {
-	int w[] = {2, 8, 7, 6, 5, 9, 3}; //��Ȩ�� 
-	int n = 7; //����� 
+	int w[] = {2, 8, 7, 6, 5, 9, 3};
+	int n = 7;
 	HuffmanTree ht;
 	HuffmanCode hc;
 	HuffmanCoding(ht, hc, w, n);
